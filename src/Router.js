@@ -1,12 +1,21 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
 
-const App = () => {
+import Login from './pages/Login';
+import Sign from './pages/Sign';
+
+const Stack = createNativeStackNavigator();
+
+const Router = () => {
   return (
-    <SafeAreaView>
-      <Text>hello world</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="LoginPage" component={Login} />
+        <Stack.Screen name="SignPage" component={Sign} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-export default App;
+export default Router;
