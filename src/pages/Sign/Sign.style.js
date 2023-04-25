@@ -5,17 +5,29 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#eceff1',
   },
   buttons_container: {
     flexDirection: 'row',
     margin: 100,
   },
-  text: {
-    fontSize: 50,
-    fontWeight: 'bold',
-    shadowOpacity: 0.3,
-    shadowRadius: 5,
-    margin: 68,
+  text_music: {
+    fontSize: 40,
+    fontWeight: '300',
+    shadowOffset: {width: -8, height: 8},
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+  },
+  text_talks: {
+    fontSize: 60,
+    fontWeight: '600',
+    // shadowOpacity: 0.3,
+    // shadowRadius: 5,
+  },
+  text_container: {
+    flexDirection: 'row',
+    margin: 100,
+    // borderWidth: 0.3,
+    // padding: 10,
   },
 });

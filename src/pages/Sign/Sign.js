@@ -13,7 +13,10 @@ function Sign({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>musicTalks</Text>
+      <View style={styles.text_container}>
+        <Text style={styles.text_music}>music</Text>
+        <Text style={styles.text_talks}>Talks</Text>
+      </View>
       <Input placeholder="Please enter your e-mail.." />
       <Input placeholder="Please enter your password.." />
       <Input placeholder="Please enter your password again.." />
