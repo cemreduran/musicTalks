@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import {Formik} from 'formik';
+import auth from '@react-native-firebase/auth';
+import {showMessage} from 'react-native-flash-message';
 
 import styles from './Login.style';
+import authErrorMessageParser from '../../utils/authErrorMessageParser';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -17,8 +20,19 @@ function Login({navigation}) {
     navigation.navigate('SignPage');
   }
 
-  function handleLoginForm(formValues) {
-    console.log(formValues);
+  async function handleFormSubmit(formValues) {
+    try {
+      await auth().signInWithEmailAndPassword(
+        formValues.usermail,
+        formValues.password,
+      );
+    } catch (error) {
+      console.log(error);
+      showMessage({
+        message: authErrorMessageParser(error.code),
+        type: 'danger',
+      });
+    }
   }
 
   return (
@@ -27,7 +41,7 @@ function Login({navigation}) {
         <Text style={styles.text_music}>music</Text>
         <Text style={styles.text_talks}>Talks</Text>
       </View>
-      <Formik initialValues={initialFormValues} onSubmit={handleLoginForm}>
+      <Formik initialValues={initialFormValues} onSubmit={handleFormSubmit}>
         {({values, handleChange, handleSubmit}) => (
           <>
             <Input

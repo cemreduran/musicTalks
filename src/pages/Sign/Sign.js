@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import {Formik} from 'formik';
+import auth from '@react-native-firebase/auth';
+import {showMessage} from 'react-native-flash-message';
 
 import styles from './Sign.style';
+import authErrorMessageParser from '../../utils/authErrorMessageParser';
 
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -18,8 +21,30 @@ function Sign({navigation}) {
     navigation.goBack();
   }
 
-  function handleLoginForm(formValues) {
-    console.log(formValues);
+  async function handleFormSubmit(formValues) {
+    if (formValues.password !== formValues.repassword) {
+      showMessage({
+        message: 'Şifreler uyuşmuyor',
+        type: 'danger',
+      });
+      return;
+    }
+    try {
+      await auth().createUserWithEmailAndPassword(
+        formValues.usermail,
+        formValues.password,
+      );
+      showMessage({
+        message: 'Kullanıcı oluşturuldu!',
+        type: 'success',
+      });
+      navigation.navigate('LoginPage');
+    } catch (error) {
+      showMessage({
+        message: authErrorMessageParser(error.code),
+        type: 'danger',
+      });
+    }
   }
 
   return (
@@ -28,7 +53,7 @@ function Sign({navigation}) {
         <Text style={styles.text_music}>music</Text>
         <Text style={styles.text_talks}>Talks</Text>
       </View>
-      <Formik initialValues={initialFormValues} onSubmit={handleLoginForm}>
+      <Formik initialValues={initialFormValues} onSubmit={handleFormSubmit}>
         {({values, handleChange, handleSubmit}) => (
           <>
             <Input
