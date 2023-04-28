@@ -5,10 +5,10 @@ import auth from '@react-native-firebase/auth';
 import {showMessage} from 'react-native-flash-message';
 
 import styles from './Sign.style';
-import authErrorMessageParser from '../../utils/authErrorMessageParser';
+import authErrorMessageParser from '../../../utils/authErrorMessageParser';
 
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import Button from '../../../components/Buttons/Button';
+import Input from '../../../components/Input';
 
 const initialFormValues = {
   usermail: '',
