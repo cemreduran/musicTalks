@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-
 import {FlatList, SafeAreaView, Text, TouchableOpacity} from 'react-native';
+import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
 import parseContentData from '../../utils/parseContentData';
@@ -33,6 +33,21 @@ function Room({navigation, route}) {
     navigation.goBack();
   };
 
+  function sendMessage(message) {
+    const userMail = auth().currentUser.email;
+
+    const sendData = {
+      roomName: roomName,
+      message: message,
+      username: userMail.split('@')[0],
+      date: new Date().toISOString(),
+    };
+
+    handleInputToggle();
+
+    return database().ref(`rooms/${roomName}/`).push(sendData);
+  }
+
   function handleInputToggle() {
     setInputModelVisible(!inputModalVisible);
   }
@@ -52,7 +67,7 @@ function Room({navigation, route}) {
       <WriteMessageModal
         visible={inputModalVisible}
         onClose={handleInputToggle}
-        onSend={null}
+        onSend={sendMessage}
       />
     </SafeAreaView>
   );

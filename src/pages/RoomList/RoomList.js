@@ -64,7 +64,6 @@ function RoomList({navigation}) {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      <RoomCard />
       <Text>hello to ROOM LİST</Text>
       <FlatList numColumns={2} data={roomList} renderItem={renderContent} />
       <FloatingButton icon="hammer" onPress={handleInputToggle} />
