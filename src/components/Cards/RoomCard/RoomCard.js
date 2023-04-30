@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  ImageBackground,
-  Vibration,
-  View,
-} from 'react-native';
+import {TouchableOpacity, Text, ImageBackground, View} from 'react-native';
 
 import styles from './RoomCard.style';
 

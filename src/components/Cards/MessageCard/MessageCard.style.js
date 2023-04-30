@@ -1,10 +1,9 @@
 import {StyleSheet} from 'react-native';
-import Colors from '../../../styles/Colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.darkgreen,
+    backgroundColor: 'green',
     padding: 5,
     marginHorizontal: 5,
     marginVertical: 8,
@@ -36,7 +35,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  dislike_container: {
+  like_container: {
     flexDirection: 'row',
     backgroundColor: 'white',
     padding: 5,
@@ -44,19 +43,19 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  dislike_count_container: {
+  like_count_container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.darkgreen,
+    backgroundColor: 'green',
     borderRadius: 25,
     padding: 3,
   },
-  dislike_count_text: {
+  like_count_text: {
     color: 'white',
     fontWeight: 'bold',
   },
-  dislike_text: {
-    color: Colors.darkgreen,
+  like_text: {
+    color: 'green',
     fontWeight: 'bold',
   },
 });

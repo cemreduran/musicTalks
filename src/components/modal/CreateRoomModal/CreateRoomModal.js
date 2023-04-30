@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, TextInput, Text} from 'react-native';
 import Modal from 'react-native-modal';
 
-import styles from './ContentInputModal.style';
+import styles from './CreateRoomModal.style';
 
 import FloatingButton from '../../Buttons/FloatingButton';
 

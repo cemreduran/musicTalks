@@ -5,7 +5,7 @@ import styles from './MessageCard.style';
 import {formatDistance, parseISO} from 'date-fns';
 import {tr} from 'date-fns/locale';
 
-const MessageCard = ({message, onBanane}) => {
+const MessageCard = ({message, Like}) => {
   const formattedDate = formatDistance(parseISO(message.date), new Date(), {
     addSuffix: true,
     locale: tr,
@@ -17,16 +17,16 @@ const MessageCard = ({message, onBanane}) => {
         <Text style={styles.user}>{message.username}</Text>
         <Text style={styles.date}>{formattedDate}</Text>
       </View>
-      <Text style={styles.title}>{message.text}</Text>
+      <Text style={styles.title}>{message.message}</Text>
 
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.dislike_container} onPress={onBanane}>
-          {!!message.dislike && (
-            <View style={styles.dislike_count_container}>
-              <Text style={styles.dislike_count_text}>{message.dislike}</Text>
+        <TouchableOpacity style={styles.like_container} onPress={Like}>
+          {!!message.like && (
+            <View style={styles.like_count_container}>
+              <Text style={styles.like_count_text}>{message.like}</Text>
             </View>
           )}
-          <Text style={styles.dislike_text}> bana ne?</Text>
+          <Text style={styles.like_text}>Helal!</Text>
         </TouchableOpacity>
       </View>
     </View>

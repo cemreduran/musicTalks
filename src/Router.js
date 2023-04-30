@@ -53,7 +53,21 @@ const Router = () => {
             }}
           />
         )}
-        <Stack.Screen name="RoomPage" component={Room} />
+        <Stack.Screen
+          name="RoomPage"
+          component={Room}
+          options={{
+            headerShown: true,
+            title: 'Grup Odaları',
+            headerLeft: () => (
+              <MaterialCommunityIcons
+                name="logout"
+                size={28}
+                onPress={() => auth().signOut()}
+              />
+            ),
+          }}
+        />
       </Stack.Navigator>
       <FlashMessage position="top" />
     </NavigationContainer>
