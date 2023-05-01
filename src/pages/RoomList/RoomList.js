@@ -26,6 +26,7 @@ function RoomList({navigation}) {
         const parsedData = parseContentData(contentData);
         setRoomList(parsedData);
       });
+    console.log(roomList);
   }, []);
 
   function createAuthRoom(roomName, image_URL, first_message) {
@@ -46,7 +47,6 @@ function RoomList({navigation}) {
       type: 'success',
     });
 
-    goToRoom();
     return database().ref(`rooms/${roomName}`).push(sendData);
   }
 
@@ -59,7 +59,14 @@ function RoomList({navigation}) {
   }
 
   const renderContent = ({item}) => {
-    return <RoomCard room_name={item.id} onPress={() => goToRoom(item.id)} />;
+    console.log(parseContentData(item));
+    return (
+      <RoomCard
+        // background_image={{uri: item[0].image}}
+        room_name={item.room_name}
+        onPress={() => goToRoom(item.room_name)}
+      />
+    );
   };
 
   return (

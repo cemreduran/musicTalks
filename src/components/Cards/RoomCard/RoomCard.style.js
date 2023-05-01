@@ -13,7 +13,7 @@ export default StyleSheet.create({
     alignContent: 'center',
   },
   text_container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: 'green',
     justifyContent: 'center',
     alignItems: 'center',

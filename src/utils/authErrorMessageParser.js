@@ -1,26 +1,14 @@
+const errorMessageMapper = {
+  'auth/invalid-email': 'Geçersiz e-posta adresi',
+  'auth/email-already-in-use': 'Bu e-posta adresi zaten alınmış',
+  'auth/email-already-exists': 'Kullanıcı zaten kayıtlı',
+  'auth/user-not-found': 'Kullanıcı bulunamadı',
+  'auth/weak-password': 'Parola çok zayıf',
+  'auth/wrong-password': 'Parola geçersiz',
+};
+
 function authErrorMessageParser(errorCode) {
-  switch (errorCode) {
-    case 'auth/invalid-email':
-      return 'Geçersiz e-posta adresi';
-
-    case 'auth/email-already-in-use':
-      return 'Bu e-posta adresi zaten alınmış';
-
-    case 'auth/email-already-exists':
-      return 'Kullanıcı zaten kayıtlı';
-
-    case 'auth/user-not-found':
-      return 'Kullanıcı bulunamadı';
-
-    case 'auth/weak-password':
-      return 'Parola çok zayıf';
-
-    case 'auth/wrong-password':
-      return 'Parola geçersiz';
-
-    default:
-      return errorCode;
-  }
+  return errorMessageMapper[errorCode];
 }
 
 export default authErrorMessageParser;

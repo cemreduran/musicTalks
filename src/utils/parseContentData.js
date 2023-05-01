@@ -2,7 +2,7 @@ function parseContentData(data) {
   return Object.keys(data)
     .map(key => {
       return {
-        id: key,
+        room_name: key,
         ...data[key],
       };
     })

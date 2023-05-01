@@ -12,7 +12,7 @@ const ContentInputModal = ({visible, onClose, onSend}) => {
   const [first_message, setFirst_message] = useState(null);
 
   function handleSend() {
-    if (!room_name) {
+    if (!room_name || !first_message) {
       return;
     }
     onSend(room_name, image_URL, first_message);
