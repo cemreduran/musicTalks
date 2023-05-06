@@ -1,15 +1,23 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  outer_container: {
+    right: -70,
+  },
+  outer_container_online_user: {
+    right: 0,
+  },
   container: {
     flex: 1,
-    backgroundColor: 'green',
-    padding: 5,
-    marginHorizontal: 5,
+    backgroundColor: 'white',
+    padding: 8,
+    marginHorizontal: 10,
     marginVertical: 8,
     borderRadius: 10,
-    elevation: 8,
-    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 5},
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    width: 300,
   },
   inner_container: {
     flexDirection: 'row',
@@ -17,16 +25,15 @@ export default StyleSheet.create({
   },
   user: {
     fontSize: 18,
-    color: 'white',
+    color: 'green',
+    fontWeight: 'bold',
   },
   date: {
-    fontSize: 18,
-    color: 'white',
+    color: 'red',
     fontStyle: 'italic',
   },
   title: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: 'black',
     fontSize: 20,
   },
   footer: {
@@ -34,10 +41,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    // backgroundColor: 'lightblue',
   },
   like_container: {
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: 'green',
     padding: 5,
     borderRadius: 25,
     justifyContent: 'center',
@@ -46,16 +54,12 @@ export default StyleSheet.create({
   like_count_container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'green',
+    backgroundColor: 'red',
     borderRadius: 25,
     padding: 3,
   },
   like_count_text: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  like_text: {
-    color: 'green',
+    color: 'black',
     fontWeight: 'bold',
   },
 });

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SafeAreaView, Text, View} from 'react-native';
 import {Formik} from 'formik';
 import auth from '@react-native-firebase/auth';

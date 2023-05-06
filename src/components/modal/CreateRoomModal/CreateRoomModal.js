@@ -9,16 +9,14 @@ import FloatingButton from '../../Buttons/FloatingButton';
 const ContentInputModal = ({visible, onClose, onSend}) => {
   const [room_name, setRoomName] = useState(null);
   const [image_URL, setImageURL] = useState(null);
-  const [first_message, setFirst_message] = useState(null);
 
   function handleSend() {
-    if (!room_name || !first_message) {
+    if (!room_name) {
       return;
     }
-    onSend(room_name, image_URL, first_message);
+    onSend(room_name, image_URL);
     setRoomName(null);
     setImageURL(null);
-    setFirst_message(null);
   }
 
   return (
@@ -39,10 +37,6 @@ const ContentInputModal = ({visible, onClose, onSend}) => {
           <TextInput
             placeholder="İstersen resim ekleyebilirsin (URL)"
             onChangeText={setImageURL}
-          />
-          <TextInput
-            placeholder="İlk mesajı sen yaz!"
-            onChangeText={setFirst_message}
           />
         </View>
         <FloatingButton icon="plus" onPress={handleSend} />

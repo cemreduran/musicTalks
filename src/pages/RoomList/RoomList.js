@@ -26,18 +26,17 @@ function RoomList({navigation}) {
         const parsedData = parseContentData(contentData);
         setRoomList(parsedData);
       });
-    console.log(roomList);
   }, []);
+  console.log(roomList.id);
 
-  function createAuthRoom(roomName, image_URL, first_message) {
+  function createAuthRoom(roomName, image_URL) {
     const userMail = auth().currentUser.email;
 
     const sendData = {
-      roomName: roomName,
       image: image_URL,
-      message: first_message,
-      username: userMail.split('@')[0],
-      date: new Date().toISOString(),
+      createdBy: userMail.split('@')[0],
+      createdDate: new Date().toISOString(),
+      roomName: roomName,
     };
 
     handleInputToggle();
@@ -47,11 +46,12 @@ function RoomList({navigation}) {
       type: 'success',
     });
 
-    return database().ref(`rooms/${roomName}`).push(sendData);
+    return database().ref('rooms/').push(sendData);
+    // database().ref(`rooms/${roomName}/${image_URL}`).push(sendData.image)
   }
 
-  function goToRoom(roomName) {
-    navigation.navigate('RoomPage', {roomName});
+  function goToRoom(roomData) {
+    navigation.navigate('RoomPage', roomData);
   }
 
   function handleInputToggle() {
@@ -59,12 +59,11 @@ function RoomList({navigation}) {
   }
 
   const renderContent = ({item}) => {
-    console.log(parseContentData(item));
     return (
       <RoomCard
-        // background_image={{uri: item[0].image}}
-        room_name={item.room_name}
-        onPress={() => goToRoom(item.room_name)}
+        background_image={item.image}
+        room_name={item.roomName}
+        onPress={() => goToRoom(item)}
       />
     );
   };
