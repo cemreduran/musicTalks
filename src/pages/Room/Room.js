@@ -6,6 +6,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
@@ -13,7 +14,7 @@ import database from '@react-native-firebase/database';
 import styles from './Room.style';
 
 import parseContentData from '../../utils/parseContentData';
-import FloatingButton from '../../components/Buttons/FloatingButton/FloatingButton';
+import Footer from '../../components/Footer/Footer';
 import WriteMessageModal from '../../components/modal/WriteMessageModal';
 import MessageCard from '../../components/Cards/MessageCard';
 
@@ -71,27 +72,35 @@ function Room({navigation, route}) {
     );
   }
 
+  const backgroundImage = {uri: roomData.image};
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text>here is choosen room : {roomData.roomName}</Text>
-      <TouchableOpacity onPress={goBack} style={{backgroundColor: 'red'}}>
-        <Text>geridön</Text>
-      </TouchableOpacity>
-      <View style={styles.flatList_container}>
+      <ImageBackground
+        source={backgroundImage}
+        // blurRadius={2}
+        resizeMode={'repeat'}
+        style={styles.background_image}>
         <FlatList
+          inverted
           style={styles.flatList}
           data={messagecontent}
           renderItem={renderMessages}
+          ListFooterComponent={<View style={{padding: 35}} />}
         />
-      </View>
-      <View style={styles.footer}>
-        <FloatingButton icon="pen" onPress={handleInputToggle} />
-      </View>
-      <WriteMessageModal
-        visible={inputModalVisible}
-        onClose={handleInputToggle}
-        onSend={sendMessage}
-      />
+        <Footer
+          roomData={roomData}
+          writeOnPress={handleInputToggle}
+          writeIcon="pen"
+          goBackPress={goBack}
+          goBackIcon="keyboard-backspace"
+        />
+        <WriteMessageModal
+          visible={inputModalVisible}
+          onClose={handleInputToggle}
+          onSend={sendMessage}
+        />
+      </ImageBackground>
     </SafeAreaView>
   );
 }

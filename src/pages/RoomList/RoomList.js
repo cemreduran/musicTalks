@@ -5,7 +5,7 @@ import {showMessage} from 'react-native-flash-message';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import RoomCard from '../../components/Cards/RoomCard';
-import FloatingButton from '../../components/Buttons/FloatingButton/FloatingButton';
+import FloatingButton from '../../components/Buttons/IconButton/IconButton';
 import CreateRoomModal from '../../components/modal/CreateRoomModal/CreateRoomModal';
 import parseContentData from '../../utils/parseContentData';
 
@@ -27,7 +27,6 @@ function RoomList({navigation}) {
         setRoomList(parsedData);
       });
   }, []);
-  console.log(roomList.id);
 
   function createAuthRoom(roomName, image_URL) {
     const userMail = auth().currentUser.email;

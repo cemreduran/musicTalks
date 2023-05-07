@@ -5,17 +5,16 @@ export default StyleSheet.create({
     flex: 1,
   },
   flatList: {
-    flex: 1,
-    backgroundColor: '#bdbdbd',
-  },
-  flatList_container: {
-    flex: 1,
-    backgroundColor: 'yellow',
-    padding: 10,
+    // backgroundColor: '#e0e0e0',
   },
   footer: {
-    width: 20,
-
-    backgroundColor: '#f9f9f9',
+    height: 40,
+    flex: 0.15,
+    backgroundColor: '#f2f2f2',
+    right: 10,
+    top: 30,
+  },
+  background_image: {
+    flex: 1,
   },
 });

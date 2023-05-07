@@ -4,9 +4,9 @@ import Modal from 'react-native-modal';
 
 import styles from './WriteMessageModal.style';
 
-import FloatingButton from '../../Buttons/FloatingButton';
+import FloatingButton from '../../Buttons/IconButton';
 
-const ContentInputModal = ({visible, onClose, onSend}) => {
+const WriteMessageModal = ({visible, onClose, onSend}) => {
   const [message, setMessage] = useState(null);
 
   function handleSend() {
@@ -22,6 +22,10 @@ const ContentInputModal = ({visible, onClose, onSend}) => {
       style={styles.modal}
       isVisible={visible}
       swipeDirection="down"
+      animationIn={'slideInUp'}
+      animationInTiming={500}
+      animationOut={message ? 'slideOutDown' : 'zoomOutUp'}
+      animationOutTiming={message ? 500 : 1500}
       onSwipeComplete={onClose}
       onBackdropPress={onClose}
       onBackButtonPress={onClose}>
@@ -39,4 +43,4 @@ const ContentInputModal = ({visible, onClose, onSend}) => {
   );
 };
 
-export default ContentInputModal;
+export default WriteMessageModal;

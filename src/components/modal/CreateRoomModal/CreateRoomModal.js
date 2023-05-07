@@ -4,9 +4,9 @@ import Modal from 'react-native-modal';
 
 import styles from './CreateRoomModal.style';
 
-import FloatingButton from '../../Buttons/FloatingButton';
+import FloatingButton from '../../Buttons/IconButton';
 
-const ContentInputModal = ({visible, onClose, onSend}) => {
+const CreateRoomModal = ({visible, onClose, onSend}) => {
   const [room_name, setRoomName] = useState(null);
   const [image_URL, setImageURL] = useState(null);
 
@@ -45,4 +45,4 @@ const ContentInputModal = ({visible, onClose, onSend}) => {
   );
 };
 
-export default ContentInputModal;
+export default CreateRoomModal;
