@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 import styles from './CreateRoomModal.style';
 
-import FloatingButton from '../../Buttons/IconButton';
+import FloatingButton from '../../buttons/IconButton';
 
 const CreateRoomModal = ({visible, onClose, onSend}) => {
   const [room_name, setRoomName] = useState(null);

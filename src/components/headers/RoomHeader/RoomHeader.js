@@ -2,14 +2,14 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import styles from './Footer.style';
+import styles from './RoomHeader.style';
 
-import FloatingButton from '../Buttons/IconButton';
+import FloatingButton from '../../buttons/IconButton';
 import {formatDistance, parseISO} from 'date-fns';
 import {tr} from 'date-fns/locale';
-import IconButton from '../Buttons/IconButton';
+import IconButton from '../../buttons/IconButton';
 
-const Footer = ({
+const Header = ({
   roomData,
   writeOnPress,
   goBackPress,
@@ -30,11 +30,11 @@ const Footer = ({
       <View style={styles.text_container}>
         <Text style={styles.room_name}>{roomData.roomName}</Text>
         <Text>CreatedBy : {roomData.createdBy}</Text>
-        <Text>({formattedDate})</Text>
+        <Text>CreatedTime : ({formattedDate})</Text>
       </View>
       <IconButton onPress={writeOnPress} icon={writeIcon} />
     </View>
   );
 };
 
-export default Footer;
+export default Header;

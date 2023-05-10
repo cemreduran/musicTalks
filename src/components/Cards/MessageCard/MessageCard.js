@@ -6,7 +6,7 @@ import styles from './MessageCard.style';
 import {formatDistance, parseISO} from 'date-fns';
 import {tr} from 'date-fns/locale';
 
-const MessageCard = ({styleOnlineUser, messageData, Like}) => {
+const MessageCard = ({styleCurrentUser, messageData, Like}) => {
   const formattedDate = formatDistance(parseISO(messageData.date), new Date(), {
     addSuffix: true,
     locale: tr,
@@ -15,8 +15,8 @@ const MessageCard = ({styleOnlineUser, messageData, Like}) => {
   return (
     <View
       style={
-        styleOnlineUser
-          ? styles.outer_container_online_user
+        styleCurrentUser
+          ? styles.outer_container_current_user
           : styles.outer_container
       }>
       <View style={styles.container}>
@@ -26,7 +26,7 @@ const MessageCard = ({styleOnlineUser, messageData, Like}) => {
         </View>
         <Text style={styles.title}>{messageData.message}</Text>
 
-        <View style={styles.footer}>
+        {/* <View style={styles.footer}>
           <TouchableOpacity style={styles.like_container} onPress={Like}>
             {!!messageData.like && (
               <View style={styles.like_count_container}>
@@ -35,7 +35,7 @@ const MessageCard = ({styleOnlineUser, messageData, Like}) => {
             )}
             <Icon name={'hand-clap'} size={20} />
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </View>
   );

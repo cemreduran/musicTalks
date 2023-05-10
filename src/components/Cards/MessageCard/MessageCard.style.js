@@ -4,7 +4,7 @@ export default StyleSheet.create({
   outer_container: {
     right: -70,
   },
-  outer_container_online_user: {
+  outer_container_current_user: {
     right: 0,
   },
   container: {

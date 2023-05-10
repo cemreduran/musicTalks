@@ -10,7 +10,7 @@ const RoomCard = ({room_name, onPress, background_image}) => {
         <ImageBackground
           style={{flex: 1}}
           resizeMode="cover"
-          source={{uri: background_image}}>
+          source={background_image}>
           <View style={styles.text_container}>
             <Text>{room_name}</Text>
           </View>

@@ -5,7 +5,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   flatList: {
-    // backgroundColor: '#e0e0e0',
+    // backgroundColor: '#eceff1',
   },
   footer: {
     height: 40,

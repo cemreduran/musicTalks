@@ -4,7 +4,7 @@ import Modal from 'react-native-modal';
 
 import styles from './WriteMessageModal.style';
 
-import FloatingButton from '../../Buttons/IconButton';
+import FloatingButton from '../../buttons/IconButton';
 
 const WriteMessageModal = ({visible, onClose, onSend}) => {
   const [message, setMessage] = useState(null);

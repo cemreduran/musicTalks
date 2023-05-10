@@ -4,10 +4,12 @@ import {showMessage} from 'react-native-flash-message';
 
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
-import RoomCard from '../../components/Cards/RoomCard';
-import FloatingButton from '../../components/Buttons/IconButton/IconButton';
+import RoomCard from '../../components/cards/RoomCard';
+import FloatingButton from '../../components/buttons/IconButton/IconButton';
 import CreateRoomModal from '../../components/modal/CreateRoomModal/CreateRoomModal';
 import parseContentData from '../../utils/parseContentData';
+import Header from '../../components/headers/RoomHeader';
+import RoomListHeader from '../../components/headers/RoomListHeader';
 
 function RoomList({navigation}) {
   const [inputModalVisible, setInputModelVisible] = useState(false);
@@ -46,7 +48,6 @@ function RoomList({navigation}) {
     });
 
     return database().ref('rooms/').push(sendData);
-    // database().ref(`rooms/${roomName}/${image_URL}`).push(sendData.image)
   }
 
   function goToRoom(roomData) {
@@ -60,7 +61,11 @@ function RoomList({navigation}) {
   const renderContent = ({item}) => {
     return (
       <RoomCard
-        background_image={item.image}
+        background_image={
+          !item.image
+            ? require('../../Image/logo_230x230.png')
+            : {uri: item.image}
+        }
         room_name={item.roomName}
         onPress={() => goToRoom(item)}
       />
@@ -68,10 +73,14 @@ function RoomList({navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <Text>hello to ROOM LİST</Text>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#eceff1'}}>
+      <RoomListHeader
+        leftButtonOnPress={handleInputToggle}
+        leftButtonIcon="hammer"
+        rightButtonOnPress={() => auth().signOut()}
+        rightButtonIcon="logout"
+      />
       <FlatList numColumns={2} data={roomList} renderItem={renderContent} />
-      <FloatingButton icon="hammer" onPress={handleInputToggle} />
       <CreateRoomModal
         visible={inputModalVisible}
         onClose={handleInputToggle}

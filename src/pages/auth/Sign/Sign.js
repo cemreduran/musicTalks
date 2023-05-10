@@ -7,7 +7,7 @@ import {showMessage} from 'react-native-flash-message';
 import styles from './Sign.style';
 import authErrorMessageParser from '../../../utils/authErrorMessageParser';
 
-import Button from '../../../components/Buttons/TextButton';
+import Button from '../../../components/buttons/TextButton';
 import Input from '../../../components/Input';
 
 const initialFormValues = {

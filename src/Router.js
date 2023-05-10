@@ -41,15 +41,8 @@ const Router = () => {
             name="RoomListPage"
             component={RoomList}
             options={{
-              headerShown: true,
+              headerShown: false,
               title: 'Grup Odaları',
-              headerLeft: () => (
-                <MaterialCommunityIcons
-                  name="logout"
-                  size={28}
-                  onPress={() => auth().signOut()}
-                />
-              ),
             }}
           />
         )}
